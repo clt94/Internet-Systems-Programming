@@ -1,0 +1,41 @@
+h1{
+	background-color: rgb(4,30,66);
+	color: white;
+	padding: 25px;
+	text-align: center;
+	border-radius: 4px;
+}
+input[type=text]{
+	width: 100px;
+	border: 2px solid rgb(4,30,66);
+	border-radius: 4px;
+}
+input[type=submit],input[type=reset]{
+	background-color: rgb(168,153,104);
+	opacity: 100%;
+	color: white;
+	padding: 8px 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border: none;
+	border-radius: 4px;
+}
+input[type=text], select {
+	width: 25%;
+	padding: 6px 10px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+input[type=submit]:hover {
+	background-color: rgb(188,173,124);
+}
+a:link, a:visited{
+	color: white;
+	text-decoration: none;
+}
+a:hover, a:active {
+	color: rgb(168,153,104);
+}

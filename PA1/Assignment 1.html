@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Assignment 1</title>
+	<style>
+	body{
+		background-color: black;
+		color: limegreen;
+		text-align: center;
+	}
+	h1{
+		background-color: #007;
+		color: #eee;
+		padding: 5px;
+		border-radius: 25px;
+		width: 900px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	img{
+		position: absolute;
+		width: 20%;
+		height: auto;
+		z-index: -1;
+		transform: translate(-50%, -50%);
+		float: right; 
+	}
+</style>
+</head>
+<body>
+<header>
+	<h1>Hello! My name is Connor Taylor and welcome to my website!</h1>
+</header>
+<h2 onload="getTime()"></h2>
+<h2>This website was finished at: 9/28/2020 5:19</h2>
+<h2 id="date"></h2>
+<h2 id="browser"></h2>
+<button onclick="factorial()">Click here to calculate factorial</button>
+<p id="fact"></p>
+<img src="C:\Users\360ga\OneDrive\Pictures\Samsung Gallery\DCIM\Camera\20201223_190322" alt="pups" id="follower">
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/TBjnYF5dmWM">
+</iframe>
+<script>
+function getTime() {
+	var now = new Date();
+	var year = now.getFullYear();
+	var month = now.getMonth();
+	var day = now.getDate();
+	var hour = now.getHours();
+	var min = now.getMinutes();
+	var sec = now.getSeconds();
+	min = checkTime(min);
+	sec = checkTime(sec);
+  	document.getElementById('date').innerHTML = "The current date and time is: " + (month + 1) + "/" + day + "/" + year + " " + hour + ":" + min + ":" + sec;
+    var t = setTimeout(getTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {
+  	i = "0" + i;
+  }
+  return i;
+}
+var nVer = navigator.appVersion;
+var nAgt = navigator.userAgent;
+var verOffset;
+// In Opera, the true version is after "Opera" or after "Version"
+if ((verOffset = nAgt.indexOf("Opera")) != -1) {
+ 	bowserName = "Opera";
+}
+// In MSIE, the true version is after "MSIE" in userAgent
+else if ((verOffset = nAgt.indexOf("MSIE")) != -1) {
+ 	browserName = "Microsoft Internet Explorer";
+}
+// In Chrome, the true version is after "Chrome" 
+else if ((verOffset = nAgt.indexOf("Chrome")) != -1) {
+ 	browserName = "Chrome";
+}
+// In Safari, the true version is after "Safari" or after "Version" 
+else if ((verOffset = nAgt.indexOf("Safari")) != -1) {
+ 	browserName = "Safari";
+}
+// In Firefox, the true version is after "Firefox" 
+else if((verOffset=nAgt.indexOf("Firefox")) != -1) {
+ 	browserName = "Firefox";
+}
+// In most other browsers, "name/version" is at the end of userAgent 
+else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) < (verOffset=nAgt.lastIndexOf('/'))){
+	browserName = nAgt.substring(nameOffset, verOffset);
+	if (browserName.toLowerCase() == browserName.toUpperCase()){
+  		browserName = navigator.appName;
+ 	}
+}
+document.getElementById("browser").innerHTML = "Your browser is: " + browserName;
+function factorial() {
+  var fact = 1;
+  var num = prompt("Please enter a number", "8");
+  while(isNaN(num) || num < 0){
+    num = prompt("Please enter a number", "8");
+  }
+  if(num == 0){
+    document.getElementById("fact").innerHTML = "The factorial is: 1";
+  }
+  while(num > 0){
+    fact *= num;
+    num --;
+  }
+  document.getElementById("fact").innerHTML = "The factorial is: " + fact;
+}
+var mouseX = 0;
+var mouseY = 0;
+var follower = document.getElementById("follower");
+var xp = 0;
+var yp = 0;
+
+document.onclick = function(e) {
+  mouseX = e.pageX;
+  mouseY = e.pageY;
+};
+
+function animate() {
+  requestAnimationFrame(animate);
+  xp += (mouseX - xp) / 12;
+  yp += (mouseY - yp) / 12;
+  follower.style.left = xp + 'px';
+  follower.style.top = yp + 'px';
+}
+
+animate();
+</script>
+</body>
+</html>
